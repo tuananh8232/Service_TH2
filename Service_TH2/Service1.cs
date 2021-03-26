@@ -22,39 +22,11 @@ namespace Service_TH2
             
         }
         
-        bool flag = true;
+        
         
         protected override void OnStart(string[] args)
         {
-            //WriteToFile("Service is started at " + DateTime.Now);
-            //timer.Elapsed += new ElapsedEventHandler(OnElapsedTime);
-            //timer.Interval = 5000; //number in milisecinds
-            //timer.Enabled = true;
-            //Process.Start("cmd.exe", "/c start /IM notepad.exe");
-            //Process.Start(@"C:\Program Files\VideoLAN\VLC\vlc.exe");
-            //while (flag)
-            //{
-            //Process[] pname = Process.GetProcessesByName("notepad");
-            //if (pname.Length == 0)
-            //{
-            //    Process.Start("cmd.exe", "/c start /IM notepad.exe");
-            //    //WriteToFile("Service is starting Notepad at " + DateTime.Now);
-            //    //Thread.Sleep(10000);
-            //    flag = false;
-
-            //}
-
-            //Process.Start("cmd.exe", "/c taskkill /IM notepad.exe");
-            ////WriteToFile("Service is stopping Notepad at " + DateTime.Now);
-            //flag = true;
-
-            //}
-
-            //Process p = new Process();
-            //p.StartInfo.FileName = "notepad.exe";
-            //p.StartInfo.Arguments = "textFileToDisplay.txt";
-            //p.Start();
-
+            
             WriteToFile("Service is started at " + DateTime.Now);
             timer.Elapsed += new ElapsedEventHandler(OnElapsedTime);
             timer.Interval = 5000; //number in milisecinds
@@ -70,8 +42,8 @@ namespace Service_TH2
 
         private void OnElapsedTime(object source, ElapsedEventArgs e)
         {
-            Process[] pname = Process.GetProcessesByName("notepad");
-            if (pname.Length == 0)
+            Process[] pname = Process.GetProcessesByName("notepad");    //Get Process
+            if (pname.Length == 0)  // Check Process is running
             {
                 Process.Start("notepad");
                 WriteToFile("Start notepad " + DateTime.Now);
@@ -88,16 +60,7 @@ namespace Service_TH2
         }
 
 
-        //public bool ProcessIsRunning()
-        //{
-        //    Process[] pname = Process.GetProcessesByName("notepad");
-        //    if (pname.Length == 0)
-        //    {
-        //        return false;
-        //    }    
-        //    return true;
-
-        //}
+        
         public void WriteToFile(string Message)
         {
             string path = AppDomain.CurrentDomain.BaseDirectory + "\\Logs";
