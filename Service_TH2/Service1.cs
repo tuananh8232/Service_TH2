@@ -7,7 +7,6 @@ using System.IO;
 using System.Linq;
 using System.ServiceProcess;
 using System.Text;
-//using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 
@@ -22,7 +21,7 @@ namespace Service_TH2
             
         }
         
-        
+       
         
         protected override void OnStart(string[] args)
         {
@@ -45,12 +44,12 @@ namespace Service_TH2
             Process[] pname = Process.GetProcessesByName("notepad");    //Get Process
             if (pname.Length == 0)  // Check Process is running
             {
-                Process.Start("notepad");
+                Process.Start("notepad");       //start process
                 WriteToFile("Start notepad " + DateTime.Now);
             }    
             else
             {
-                foreach (var process in pname)
+                foreach (var process in pname)  //Stop Process
                 {
                     process.Kill();
                     WriteToFile("Stop notepad " + DateTime.Now);
